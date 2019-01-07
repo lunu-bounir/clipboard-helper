@@ -1,0 +1,7 @@
+notifications:
+  email: false
+os: windows
+
+script:
+- run.bat
+
