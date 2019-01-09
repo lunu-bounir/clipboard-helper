@@ -13,4 +13,6 @@ g++ helper.mm wait_osx.mm ./clip/libclip.a \
   -fobjc-arc \
   -framework AppKit \
   -I ./clip \
-  -o helper_osx
+  -o helper
+
+zip mac.zip -9 helper installer/mac/install.sh installer/mac/uninstall.sh

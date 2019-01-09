@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FILE=helper_osx
+FILE=helper
 ID=desktop.clipboard.manager
 
 echo " .. Removing manifest file for Google Chrome"

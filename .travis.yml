@@ -14,8 +14,8 @@ deploy:
   api_key:
     secure: ke2uNrZ2KO88OAlCdKhMpacNISQ+osbUwFR34ul0eEtn1+ZTpWb8ZM0a2qeSB4XdXlOB9Qz5u5x4g4II5YTlDdF0HLMf8JYXnppTV/QMIkhw/VJ0JO+t3CBDKoVmqNpJ+oBmO0mjOZE7vQd1L8J4U2z5Dx1I4NiWKtRUdOUVtuwHDasrbzN1NNbCk2HuxW7cfIiZ80VWmgclu9NM3La+4lCpxJCB4B5sVwhl/iybn1cql8O70pFMIQ5623p7LnMgkTKEFSIyCxmwH/Fs9h4Cp6yuUrUsvhnpahsWnVQ6IbP0fi1QRgBi0e9oh/mGtrqbANiEtmD5da9SRhEtHizsPlOA52cIOoMAnFeENRq3P2iyc27nTXiJqlS6y7PejFbWQtSzw0BO9yhuDz3XBnQ5MkIS64fFj3TR/zWg0+TIVuXZBzopAScugfWo29TxOOKF6w+7nDcEdzbTaM1EO8E4QRclUgkdEyI+mwNbhKk4BufS3YOz7W8T8QWx93rQFKgZMqjKaCthdfYWdWQOnKvRiJYUp3/qa5NGfa+QxTAj0VVZuIDCL5Kf/qQN6CvhHkOprAMYdFm8NS9RrV5ZsLq09E2t5sxTVHv5usnIQSd0XM8SRfIl6bpYfNfnddSw33zFYrGe6bif8t2fJA2Cugbd2dh7kY9G1SWZ6uw4lPOmpCM=
   file:
-    - helper_win.exe
-    - helper_osx
+    - mac.zip
+    - windows.zip
   skip_cleanup: true
   on:
     tags: true

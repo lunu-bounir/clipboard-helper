@@ -2,18 +2,10 @@
 
 cd "$(dirname "$0")"
 
-FILE=helper_osx
-VERSION=0.1.1
+FILE=helper
 ID=desktop.clipboard.manager
 
-
-URL=https://github.com/lunu-bounir/clipboard-helper/releases/download/$VERSION/$FILE
-
-echo ".. Downloading $FILE from github releases"
-echo "$URL"
-
-wget -q URL $URL -O $FILE
-chmod +x $FILE
+echo ".. Copy $FILE to $HOME/.config/desktop.clipboard.manager/"
 mkdir -p $HOME/.config/desktop.clipboard.manager/
 cp $FILE $HOME/.config/desktop.clipboard.manager/
 
@@ -29,25 +21,20 @@ cat > $ID.json <<- EOM
 }
 EOM
 
-echo ".. Supporting Chrome Browser"
-echo $HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts
+echo ".. Copy Google Chrome manifest to $HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts"
 cp $ID.json "$HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts/"
 
-echo ".. Supporting Chromium Browser"
-echo $HOME/Library/Application Support/Chromium/NativeMessagingHosts
+echo ".. Copy Chromium manifest to $HOME/Library/Application Support/Chromium/NativeMessagingHosts"
 cp $ID.json "$HOME/Library/Application Support/Chromium/NativeMessagingHosts/"
 
-echo ".. Supporting Vivaldi Browser"
-echo $HOME/Library/Application Support/Vivaldi/NativeMessagingHosts
+echo ".. Copy Vivaldi manifest to $HOME/Library/Application Support/Vivaldi/NativeMessagingHosts"
 cp $ID.json "$HOME/Library/Application Support/Vivaldi/NativeMessagingHosts/"
 
-echo ".. Supporting Vivaldi Browser"
-echo $HOME/Library/Application Support/Mozilla/NativeMessagingHosts
+echo ".. Copy Mozilla Firefox manifest to $HOME/Library/Application Support/Mozilla/NativeMessagingHosts"
 cp $ID.json "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/"
 
 echo ".. Clean-up"
 rm $ID.json
-rm $FILE
 
 echo ".. Done!"
 read -p "Press enter to continue"

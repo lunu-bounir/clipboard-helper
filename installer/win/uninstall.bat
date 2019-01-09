@@ -3,7 +3,7 @@
 pushd "%~dp0"
 
 SET ID="desktop.clipboard.manager"
-SET FILE=helper_win.exe
+SET FILE=helper.exe
 
 ECHO .. Deleting Chrome Registry
 REG DELETE "HKCU\Software\Google\Chrome\NativeMessagingHosts\%ID%" /f
@@ -17,10 +17,6 @@ taskkill /im %FILE% /f >nul 2>&1
 
 ECHO .. Deleting %ID% directory
 RMDIR /Q /S "%LocalAPPData%\%ID%"
-
-ECHO .. Clean-up
-IF EXIST wget.js DEL /F wget.js
-IF EXIST helper_win.exe DEL /F %FILE%
 
 ECHO.
 ECHO .. Done!
