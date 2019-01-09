@@ -1,3 +1,4 @@
+#include <iostream>
 #include<windows.h>
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
@@ -17,7 +18,7 @@ void ClipboardWait() {
   HWND windowHandle=CreateWindow(szClassName, NULL, WS_POPUP, 0, 0, 50, 50, NULL, NULL, NULL, NULL);
 
   MSG messages;
-  while(GetMessage(&messages, NULL, 0, 0)) {
+  while(GetMessage(&messages, NULL, 0, 0) && std::cin.good()) {
     TranslateMessage(&messages);
     DispatchMessage(&messages);
   }
@@ -29,11 +30,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) 
     AddClipboardFormatListener(hwnd);
     break;
   case WM_CLIPBOARDUPDATE:
+    RemoveClipboardFormatListener(hwnd);
     DestroyWindow(hwnd);
     break;
   case WM_CHAR: //this is just for a program exit besides window's borders/task bar
     if (wparam==VK_ESCAPE) {
-          DestroyWindow(hwnd);
+      DestroyWindow(hwnd);
     }
   case WM_DESTROY:
     PostQuitMessage(0);

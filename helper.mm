@@ -8,7 +8,8 @@ using json = nlohmann::json;
 void ClipboardWait();
 
 int main() {
-  while (1) {
+  std::cout.setf(std::ios_base::unitbuf);
+  while (std::cin.good()) {
     unsigned int length = 0;
 
     for (int i = 0; i < 4; i++) {
