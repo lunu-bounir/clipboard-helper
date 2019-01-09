@@ -6,7 +6,7 @@ void ClipboardWait() {
   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
   const int old = pasteboard.changeCount;
 
-  while(pasteboard.changeCount == old && std::cin.good()) {
+  while(pasteboard.changeCount == old) {
     usleep(5e5);
   }
 }

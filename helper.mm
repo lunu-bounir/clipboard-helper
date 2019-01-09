@@ -9,19 +9,23 @@ void ClipboardWait();
 
 int main() {
   std::cout.setf(std::ios_base::unitbuf);
-  while (std::cin.good()) {
-    unsigned int length = 0;
-
-    for (int i = 0; i < 4; i++) {
-      unsigned int read_char = getchar();
-      length = length | (read_char << i*8);
-    }
-
-    //read message
+  while (true) {
+    unsigned int ch, inMsgLen = 0;
     std::string message = "";
-    for (unsigned int i = 0; i < length; i++) {
-      message += getchar();
+
+    // Read 4 bytes for data length
+    std::cin.read((char*)&inMsgLen, 4);
+
+    if (inMsgLen == 0) {
+      break;
     }
+    else {
+      for (unsigned int i=0; i < inMsgLen; i++) {
+        ch = getchar();
+        message += ch;
+      }
+    }
+
     auto request = json::parse(message);
 
     // write message
@@ -50,8 +54,11 @@ int main() {
 
     message = response.dump();
     unsigned int len = message.length();
-    std::cout << char(len>>0) << char(len>>8) << char(len>>16) << char(len>>24);
-    std::cout << message << std::flush;
+
+    // Send 4 bytes of data length
+    std::cout.write((char*)&len, 4);
+    // Send the data
+    std::cout << message;
   }
 
   return 0;

@@ -18,7 +18,7 @@ void ClipboardWait() {
   HWND windowHandle=CreateWindow(szClassName, NULL, WS_POPUP, 0, 0, 50, 50, NULL, NULL, NULL, NULL);
 
   MSG messages;
-  while(GetMessage(&messages, NULL, 0, 0) && std::cin.good()) {
+  while(GetMessage(&messages, NULL, 0, 0)) {
     TranslateMessage(&messages);
     DispatchMessage(&messages);
   }
