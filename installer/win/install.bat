@@ -20,7 +20,7 @@ ECHO .. Copy Firefox manifest to %LocalAPPData%\%ID%\manifest-firefox.json
   ECHO {
   ECHO   "name": "desktop.clipboard.manager",
   ECHO   "description": "native part of the Desktop Clipboard Manager extension",
-  ECHO   "path": "helper_win.exe",
+  ECHO   "path": "%FILE%",
   ECHO   "type": "stdio",
   ECHO   "allowed_extensions": ["4948871b49c16729cf376bc1328243311ebd5f3f@temporary-addon"]
   ECHO }
@@ -30,7 +30,7 @@ ECHO .. Copy Chrome manifest to %LocalAPPData%\%ID%\manifest-chrome.json
   ECHO {
   ECHO   "name": "desktop.clipboard.manager",
   ECHO   "description": "native part of the Desktop Clipboard Manager extension",
-  ECHO   "path": "helper_win.exe",
+  ECHO   "path": "%FILE%",
   ECHO   "type": "stdio",
   ECHO   "allowed_origins": ["chrome-extension://flobepdpiekfpcbajhbkppndnoiiaipa/"]
   ECHO }
