@@ -13,4 +13,4 @@ cl.exe /c /Zi /nologo /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _W
 
 link.exe /ERRORREPORT:QUEUE /OUT:"helper.exe" /INCREMENTAL /NOLOGO .\clip\Debug\clip.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X86 /SAFESEH /machine:X86 wait_win.obj helper.obj
 
-zip windows.zip -9 helper.exe installer\win\install.bat installer\win\uninstall.bat
+7z a -tzip windows.zip helper.exe .\installer\win\install.bat .\installer\win\uninstall.bat

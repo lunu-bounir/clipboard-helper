@@ -15,4 +15,4 @@ g++ helper.mm wait_osx.mm ./clip/libclip.a \
   -I ./clip \
   -o helper
 
-zip mac.zip -9 helper installer/mac/install.sh installer/mac/uninstall.sh
+zip  -j -9 mac.zip helper installer/mac/install.sh installer/mac/uninstall.sh
