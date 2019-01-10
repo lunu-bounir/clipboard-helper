@@ -22,7 +22,7 @@ ECHO .. Copy Firefox manifest to %LocalAPPData%\%ID%\manifest-firefox.json
   ECHO   "description": "native part of the Desktop Clipboard Manager extension",
   ECHO   "path": "%FILE%",
   ECHO   "type": "stdio",
-  ECHO   "allowed_extensions": ["4948871b49c16729cf376bc1328243311ebd5f3f@temporary-addon"]
+  ECHO   "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
   ECHO }
 ) > %LocalAPPData%\%ID%\manifest-firefox.json
 ECHO .. Copy Chrome manifest to %LocalAPPData%\%ID%\manifest-chrome.json
@@ -32,7 +32,7 @@ ECHO .. Copy Chrome manifest to %LocalAPPData%\%ID%\manifest-chrome.json
   ECHO   "description": "native part of the Desktop Clipboard Manager extension",
   ECHO   "path": "%FILE%",
   ECHO   "type": "stdio",
-  ECHO   "allowed_origins": ["chrome-extension://flobepdpiekfpcbajhbkppndnoiiaipa/"]
+  ECHO   "allowed_origins": ["chrome-extension://pkigjgihlaonoomgjgannieikjecdhil/", "chrome-extension://empcclfpdmhckpdfpgljnbbkcakfnbho/"]
   ECHO }
 ) > %LocalAPPData%\%ID%\manifest-chrome.json
 

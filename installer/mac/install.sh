@@ -16,7 +16,8 @@ cat > $ID.json <<- EOM
   "path": "$HOME/.config/$ID/$FILE",
   "type": "stdio",
   "allowed_origins": [
-    "chrome-extension://fkjpmllcngkflcffmimkfbjaikkmglfd/"
+    "chrome-extension://pkigjgihlaonoomgjgannieikjecdhil/",
+    "chrome-extension://empcclfpdmhckpdfpgljnbbkcakfnbho/"
   ]
 }
 EOM
@@ -31,7 +32,15 @@ echo ".. Copy Vivaldi manifest to $HOME/Library/Application Support/Vivaldi/Nati
 cp $ID.json "$HOME/Library/Application Support/Vivaldi/NativeMessagingHosts/"
 
 echo ".. Copy Mozilla Firefox manifest to $HOME/Library/Application Support/Mozilla/NativeMessagingHosts"
-cp $ID.json "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/"
+cat > $HOME/Library/Application Support/Mozilla/NativeMessagingHosts/$ID.json <<- EOM
+{
+  "name": "$ID",
+  "description": "native part of the Desktop Clipboard Manager extension",
+  "path": "$HOME/.config/$ID/$FILE",
+  "type": "stdio",
+  "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
+}
+EOM
 
 echo ".. Clean-up"
 rm $ID.json
