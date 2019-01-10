@@ -3,7 +3,7 @@
 git clone https://github.com/dacap/clip
 pushd clip
 cmake .
-make
+cmake --build . --target clip --config Release
 popd
 wget https://github.com/nlohmann/json/releases/download/v3.5.0/json.hpp -c
 
