@@ -45,8 +45,16 @@ int main() {
       std::string value;
       clip::get_text(value);
       // limit to 1M
-      response["result"] = value.substr(0, 1024 * 1024 - 5000);
-      response["length"] = value.length();
+      unsigned int max = 1024 * 1024 - 5000;
+      if (request.find("max") != request.end()) {
+        max = request["max"];
+      }
+      if (value.length() > max) {
+        response["error"] = "clipboard maximum size reached";
+      }
+      else {
+        response["result"] = value;
+      }
     }
     else {
       throw (request["method"], " method is not supported");
