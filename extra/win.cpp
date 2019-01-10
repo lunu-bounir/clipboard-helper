@@ -45,3 +45,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) 
   }
   return 0;
 }
+
+int pid() {
+  return -1;
+}
+
+void focus(int pid) {}

@@ -7,7 +7,7 @@ cmake --build . --target clip --config Release
 popd
 wget https://github.com/nlohmann/json/releases/download/v3.5.0/json.hpp -c
 
-g++ helper.mm wait_osx.mm ./clip/libclip.a \
+g++ helper.mm extra/osx.mm ./clip/libclip.a \
   -stdlib=libc++ \
   -std=gnu++11 \
   -fobjc-arc \

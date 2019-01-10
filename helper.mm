@@ -6,6 +6,8 @@
 using json = nlohmann::json;
 
 void ClipboardWait();
+int pid();
+void focus(int);
 
 int main() {
   std::cout.setf(std::ios_base::unitbuf);
@@ -55,6 +57,12 @@ int main() {
       else {
         response["result"] = value;
       }
+    }
+    else if (request["method"] == "pid") {
+      response["result"] = pid();
+    }
+    else if (request["method"] == "focus") {
+      focus(request["pid"]);
     }
     else {
       throw (request["method"], " method is not supported");
