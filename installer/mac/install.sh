@@ -32,7 +32,7 @@ echo ".. Copy Vivaldi manifest to $HOME/Library/Application Support/Vivaldi/Nati
 cp $ID.json "$HOME/Library/Application Support/Vivaldi/NativeMessagingHosts/"
 
 echo ".. Copy Mozilla Firefox manifest to $HOME/Library/Application Support/Mozilla/NativeMessagingHosts"
-cat > $HOME/Library/Application Support/Mozilla/NativeMessagingHosts/$ID.json <<- EOM
+cat > "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/$ID.json" <<- EOM
 {
   "name": "$ID",
   "description": "native part of the Desktop Clipboard Manager extension",
