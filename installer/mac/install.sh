@@ -12,10 +12,11 @@ cp $FILE $HOME/.config/desktop.clipboard.manager/
 cat > $ID.json <<- EOM
 {
   "name": "$ID",
-  "description": "native part of the Desktop Clipboard Manager extension",
+  "description": "native part of the Clipboard History Manager extension",
   "path": "$HOME/.config/$ID/$FILE",
   "type": "stdio",
   "allowed_origins": [
+    "chrome-extension://dcpgnicohhclhnjfchhbjaonpnedimig/",
     "chrome-extension://pkigjgihlaonoomgjgannieikjecdhil/",
     "chrome-extension://empcclfpdmhckpdfpgljnbbkcakfnbho/"
   ]
@@ -35,7 +36,7 @@ echo ".. Copy Mozilla Firefox manifest to $HOME/Library/Application Support/Mozi
 cat > "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/$ID.json" <<- EOM
 {
   "name": "$ID",
-  "description": "native part of the Desktop Clipboard Manager extension",
+  "description": "native part of the Clipboard History Manager extension",
   "path": "$HOME/.config/$ID/$FILE",
   "type": "stdio",
   "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
