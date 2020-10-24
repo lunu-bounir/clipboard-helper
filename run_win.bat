@@ -4,7 +4,7 @@ git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
 cmake .
-cmake -D CMAKE_C_FLAGS_RELEASE:STRING="/MT /O2 /DNDEBUG" --build . --target clip --config Release
+cmake --build . --target clip --config Release
 
 dir
 
