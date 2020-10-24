@@ -1,6 +1,27 @@
 #include <Cocoa/Cocoa.h>
 #include <unistd.h>
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <stdio.h>
+
+std::string exec(const char* cmd) {
+  FILE* pipe = popen(cmd, "r");
+  if (!pipe) return "ERROR";
+  char buffer[128];
+  std::string result = "";
+  while(!feof(pipe)) {
+    if(fgets(buffer, 128, pipe) != NULL) {
+      result += buffer;
+    }
+  }
+  pclose(pipe);
+  return result;
+}
+
+std::string paste() {
+  return exec("pbpaste");
+}
 
 void ClipboardWait() {
   NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
@@ -24,19 +45,4 @@ int pid() {
 void focus(int pid) {
   NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
   [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
-}
-
-void insert() {
-  CGEventSourceRef eventSource = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-  CGEventRef keyEventDown = CGEventCreateKeyboardEvent(eventSource, 0, true);
-  NSString * characters = @"this is a sample text";
-  UniChar buffer;
-  for (int i = 0; i < [characters length]; i++) {
-    [characters getCharacters:&buffer range:NSMakeRange(i, 1)];
-    keyEventDown = CGEventCreateKeyboardEvent(eventSource, 1, true);
-    CGEventKeyboardSetUnicodeString(keyEventDown, 1, &buffer);
-    CGEventPost(kCGHIDEventTap, keyEventDown);
-    CFRelease(keyEventDown);
-  }
-  CFRelease(eventSource);
 }

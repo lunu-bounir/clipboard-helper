@@ -24,16 +24,65 @@ cat > $ID.json <<- EOM
 EOM
 
 echo ".. Copy Google Chrome manifest to $HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts/"
 cp $ID.json "$HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts/"
 
+
 echo ".. Copy Chromium manifest to $HOME/Library/Application Support/Chromium/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Chromium/NativeMessagingHosts/"
 cp $ID.json "$HOME/Library/Application Support/Chromium/NativeMessagingHosts/"
 
 echo ".. Copy Vivaldi manifest to $HOME/Library/Application Support/Vivaldi/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Vivaldi/NativeMessagingHosts/"
 cp $ID.json "$HOME/Library/Application Support/Vivaldi/NativeMessagingHosts/"
 
+echo ".. Copy BraveSoftware manifest to $HOME/Library/Application Support/BraveSoftware/Brave-Browser/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/BraveSoftware/Brave-Browser/NativeMessagingHosts/"
+cp $ID.json "$HOME/Library/Application Support/BraveSoftware/Brave-Browser/NativeMessagingHosts/"
+
+echo ".. Copy Edge manifest to $HOME/Library/Application Support/Microsoft Edge/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Microsoft Edge/NativeMessagingHosts/"
+cp $ID.json "$HOME/Library/Application Support/Microsoft Edge/NativeMessagingHosts/"
+
 echo ".. Copy Mozilla Firefox manifest to $HOME/Library/Application Support/Mozilla/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/"
 cat > "$HOME/Library/Application Support/Mozilla/NativeMessagingHosts/$ID.json" <<- EOM
+{
+  "name": "$ID",
+  "description": "native part of the Clipboard History Manager extension",
+  "path": "$HOME/.config/$ID/$FILE",
+  "type": "stdio",
+  "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
+}
+EOM
+
+echo ".. Copy Waterfox manifest to $HOME/Library/Application Support/Waterfox/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Waterfox/NativeMessagingHosts/"
+cat > "$HOME/Library/Application Support/Waterfox/NativeMessagingHosts/$ID.json" <<- EOM
+{
+  "name": "$ID",
+  "description": "native part of the Clipboard History Manager extension",
+  "path": "$HOME/.config/$ID/$FILE",
+  "type": "stdio",
+  "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
+}
+EOM
+
+echo ".. Copy TorBrowser manifest to $HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts"
+mkdir "$HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts/"
+cat > "$HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts/$ID.json" <<- EOM
+{
+  "name": "$ID",
+  "description": "native part of the Clipboard History Manager extension",
+  "path": "$HOME/.config/$ID/$FILE",
+  "type": "stdio",
+  "allowed_extensions": ["{82b3a366-18e0-4400-aa21-36a966d0a42e}"]
+}
+EOM
+
+echo ".. Copy Thunderbird manifest to $HOME/Library/Application Support/Thunderbird/NativeMessagingHosts"
+mkdir -p "$HOME/Library/Application Support/Thunderbird/NativeMessagingHosts"
+cat > "$HOME/Library/Application Support/Thunderbird/NativeMessagingHosts/$ID.json" <<- EOM
 {
   "name": "$ID",
   "description": "native part of the Clipboard History Manager extension",
