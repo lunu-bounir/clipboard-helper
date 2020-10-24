@@ -4,9 +4,10 @@ git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
 cmake .
-cmake -D CMAKE_C_FLAGS_RELEASE:STRING="/MT /O2 /DNDEBUG" --build . --target clip
+cmake -D CMAKE_C_FLAGS_RELEASE:STRING="/MT /O2 /DNDEBUG" --build . --target clip --config Release
 
 dir
+
 cd ..
 
 wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp
