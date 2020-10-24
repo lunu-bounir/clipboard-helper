@@ -1,7 +1,29 @@
 #include <iostream>
-#include<windows.h>
+#include <windows.h>
+#include <string>
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
+
+std::string paste() {
+  if (! OpenClipboard(nullptr))
+    throw 20;
+
+  HANDLE hData = GetClipboardData(CF_TEXT);
+  if (hData == nullptr)
+    throw 21;
+
+  char * pszText = static_cast<char*>(GlobalLock(hData));
+  if (pszText == nullptr)
+    throw 22;
+
+  std::string text(pszText);
+
+  GlobalUnlock(hData);
+
+  CloseClipboard();
+
+  return text;
+}
 
 void ClipboardWait() {
   const char szClassName[] = "Clipboard Manager";

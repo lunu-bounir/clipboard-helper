@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include "json.hpp"
-#include "clip/clip.h"
 
 using json = nlohmann::json;
 
 void ClipboardWait();
+std::string paste();
 int pid();
 void focus(int);
 
@@ -33,10 +33,7 @@ int main() {
     // write message
     json response;
 
-    if (request["method"] == "write") {
-      response["result"] = clip::set_text(request["value"]);
-    }
-    else if (request["method"] == "wait") {
+    if (request["method"] == "wait") {
       ClipboardWait();
       response["result"] = true;
     }
@@ -44,8 +41,7 @@ int main() {
       if (request["method"] == "read-next") {
         ClipboardWait();
       }
-      std::string value;
-      clip::get_text(value);
+      std::string value = paste();
       // limit to 1M
       unsigned int max = 1024 * 1024 - 5000;
       if (request.find("max") != request.end()) {
