@@ -10,8 +10,8 @@ cd ..
 wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp
 
 copy helper.mm helper.cpp
-cl.exe /D UNICODE /c /W3 /WX- /EHsc /MD helper.cpp
-cl.exe /D UNICODE /c /W3 /WX- /EHsc /MD extra/win.cpp
+cl.exe /D "UNICODE" /c /W3 /WX- /EHsc /MD helper.cpp
+cl.exe /D "UNICODE" /c /W3 /WX- /EHsc /MD extra/win.cpp
 
 link.exe /OUT:"helper.exe" .\clip\Release\clip.lib user32.lib gdi32.lib /SUBSYSTEM:CONSOLE /machine:X86 win.obj helper.obj
 
