@@ -1,3 +1,4 @@
+#include <Cocoa/Cocoa.h>
 #include <unistd.h>
 #include <iostream>
 #include <string>
