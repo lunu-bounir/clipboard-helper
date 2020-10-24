@@ -13,6 +13,6 @@ copy helper.mm helper.cpp
 cl.exe /D NDEBUG /c /W3 /WX- /EHsc /MD helper.cpp
 cl.exe /D NDEBUG /c /W3 /WX- /EHsc /MD extra/win.cpp
 
-link.exe /OUT:"helper.exe" .\clip\Release\clip.lib user32.lib gdi32.lib /SUBSYSTEM:CONSOLE /machine:X86 win.obj helper.obj
+link.exe /MT /OUT:"helper.exe" .\clip\Release\clip.lib user32.lib gdi32.lib /SUBSYSTEM:CONSOLE /machine:X86 win.obj helper.obj
 
 7z a -tzip windows.zip helper.exe .\installer\win\install.bat .\installer\win\uninstall.bat
