@@ -1,5 +1,7 @@
 #!/bin/bash
 
+wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp
+
 g++ helper.mm extra/osx.mm \
   -stdlib=libc++ \
   -std=gnu++11 \
