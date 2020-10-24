@@ -4,7 +4,7 @@ git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
 cmake .
-cmake --build . --target clip --config Release
+cmake --build . --target clip --config Release -DCMAKE_BUILD_TYPE=Release
 cd ..
 
 wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp
