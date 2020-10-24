@@ -1,11 +1,11 @@
 #!/bin/bash
 
-git clone https://github.com/dacap/clip
+git clone -b 'v1.2' --single-branch https://github.com/dacap/clip
 pushd clip
 cmake .
 cmake --build . --target clip --config Release
 popd
-wget https://github.com/nlohmann/json/releases/download/v3.5.0/json.hpp -c
+wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp -c
 
 g++ helper.mm extra/osx.mm ./clip/libclip.a \
   -stdlib=libc++ \

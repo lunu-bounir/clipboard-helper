@@ -29,7 +29,7 @@ void focus(int pid) {
 void insert() {
   CGEventSourceRef eventSource = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
   CGEventRef keyEventDown = CGEventCreateKeyboardEvent(eventSource, 0, true);
-  NSString * characters = "this is a sample text";
+  NSString * characters = @"this is a sample text";
   UniChar buffer;
   for (int i = 0; i < [characters length]; i++) {
     [characters getCharacters:&buffer range:NSMakeRange(i, 1)];
