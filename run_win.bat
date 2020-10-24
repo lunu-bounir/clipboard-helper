@@ -4,7 +4,8 @@ git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
 cmake .
-cmake -D LLVM_USE_CRT_RELEASE=MT --build . --target clip --config Release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --target clip --config Release
 
 dir
 cd ..
