@@ -3,7 +3,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Too
 git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
-cmake -DCMAKE_BUILD_TYPE=Release .
+cmake -D LLVM_USE_CRT_RELEASE=MT .
 cmake --build . --target clip --config Release
 
 dir
