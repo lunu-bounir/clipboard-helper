@@ -1,6 +1,6 @@
 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat"
 
-git clone -b 'v1.2' --single-branch https://github.com/dacap/clip
+git clone --branch "v1.2" https://github.com/dacap/clip
 
 pwd
 ls
