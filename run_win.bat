@@ -3,7 +3,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Too
 git clone --branch "v1.2" https://github.com/dacap/clip
 
 cd clip
-cmake -DCMAKE_C_FLAGS:STRING="-MT -O2 -Ob2 -D NDEBUG" -DCMAKE_CXX_FLAGS:STRING="-MT -O2 -Ob2 -D NDEBUG" .
+cmake -DCMAKE_C_FLAGS:STRING="-MV -D NDEBUG" -DCMAKE_CXX_FLAGS:STRING="-MT -D NDEBUG" -DCMAKE_BUILD_TYPE=Release .
 cmake --build . --target clip --config Release
 dir
 cd ..
