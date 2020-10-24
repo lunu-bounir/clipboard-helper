@@ -2,17 +2,9 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Too
 
 git clone --branch "v1.2" https://github.com/dacap/clip
 
-pwd
-ls
-
 cd clip
 cmake .
 cmake --build . --target clip --config Release
-
-pwd
-ls
-
-
 cd ..
 
 wget https://github.com/nlohmann/json/releases/download/v3.9.1/json.hpp
