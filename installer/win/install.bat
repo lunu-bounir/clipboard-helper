@@ -40,12 +40,16 @@ ECHO.
 ECHO .. Writting to Chrome Registry
 ECHO .. Key: HKCU\Software\Google\Chrome\NativeMessagingHosts\%ID%
 REG ADD "HKCU\Software\Google\Chrome\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%LocalAPPData%\%ID%\manifest-chrome.json" /f
+REG ADD "HKCU\Software\Chromium\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%LocalAPPData%\%ID%\manifest-chrome.json" /f
+REG ADD "HKCU\Software\Microsoft\Edge\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%LocalAPPData%\%ID%\manifest-chrome.json" /f
 
 ECHO.
 ECHO .. Writting to Firefox Registry
 ECHO .. Key: HKCU\SOFTWARE\Mozilla\NativeMessagingHosts\%ID%
 FOR %%f in ("%LocalAPPData%") do SET SHORT_PATH=%%~sf
 REG ADD "HKCU\SOFTWARE\Mozilla\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%SHORT_PATH%\%ID%\manifest-firefox.json" /f
+REG ADD "HKCU\SOFTWARE\Waterfox\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%SHORT_PATH%\%ID%\manifest-firefox.json" /f
+REG ADD "HKCU\SOFTWARE\Thunderbird\NativeMessagingHosts\%ID%" /ve /t REG_SZ /d "%SHORT_PATH%\%ID%\manifest-firefox.json" /f
 
 echo .. Done!
 pause
