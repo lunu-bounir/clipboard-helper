@@ -27,7 +27,6 @@ echo ".. Copy Google Chrome manifest to $HOME/Library/Application Support/Google
 mkdir -p "$HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts/"
 cp $ID.json "$HOME/Library/Application Support/Google/Chrome/NativeMessagingHosts/"
 
-
 echo ".. Copy Chromium manifest to $HOME/Library/Application Support/Chromium/NativeMessagingHosts"
 mkdir -p "$HOME/Library/Application Support/Chromium/NativeMessagingHosts/"
 cp $ID.json "$HOME/Library/Application Support/Chromium/NativeMessagingHosts/"
@@ -95,5 +94,9 @@ EOM
 echo ".. Clean-up"
 rm $ID.json
 
-echo ".. Done!"
-read -p "Press enter to continue"
+printf "\033[0;31mIMPORTANT\033[0m\n"
+printf "\033[0;34mFor the extension to use this helper, right-click on the helper executable, and press the \"Open\" context menu item once for your operating system to whitelist this executable.\033[0m\n"
+read -p "Press enter to open directory"
+open ~/.config/desktop.clipboard.manager
+
+read -p ".. Done!"
