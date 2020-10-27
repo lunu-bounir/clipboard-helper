@@ -68,7 +68,7 @@ cat > "$HOME/Library/Application Support/Waterfox/NativeMessagingHosts/$ID.json"
 EOM
 
 echo ".. Copy TorBrowser manifest to $HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts"
-mkdir "$HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts/"
+mkdir -p "$HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts/"
 cat > "$HOME/Library/Application Support/TorBrowser-Data/Browser/Mozilla/NativeMessagingHosts/$ID.json" <<- EOM
 {
   "name": "$ID",
