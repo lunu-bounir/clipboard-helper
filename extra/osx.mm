@@ -1,26 +1,10 @@
 #include <Cocoa/Cocoa.h>
-#include <unistd.h>
-#include <iostream>
 #include <string>
-#include <sstream>
-#include <stdio.h>
-
-std::string exec(const char* cmd) {
-  FILE* pipe = popen(cmd, "r");
-  if (!pipe) return "ERROR";
-  char buffer[128];
-  std::string result = "";
-  while(!feof(pipe)) {
-    if(fgets(buffer, 128, pipe) != NULL) {
-      result += buffer;
-    }
-  }
-  pclose(pipe);
-  return result;
-}
 
 std::string paste() {
-  return exec("pbpaste");
+  NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
+  NSString* contents = [pasteboard stringForType:NSPasteboardTypeString];
+  return std::string([contents UTF8String]);
 }
 
 void ClipboardWait() {
