@@ -4,6 +4,11 @@
 std::string paste() {
   NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
   NSString* contents = [pasteboard stringForType:NSPasteboardTypeString];
+
+  if ([contents length] == 0) { //string is empty or nil
+    return "";
+  }
+
   return std::string([contents UTF8String]);
 }
 
