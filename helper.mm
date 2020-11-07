@@ -51,7 +51,12 @@ int main() {
         response["error"] = "clipboard maximum size reached";
       }
       else {
-        response["result"] = value;
+        if (value.length()) {
+          response["result"] = value;
+        }
+        else {
+          response["error"] = "clipboard is empty";
+        }
       }
     }
     else if (request["method"] == "pid") {
