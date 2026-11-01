@@ -19,4 +19,4 @@ if [ ! -f helper ]; then
   exit 1
 fi
 
-zip -j -9 linux.zip helper installer/linux/install.sh installer/linux/uninstall.sh
+zip -j -9 linux.zip helper installer/linux/install.sh installer/linux/uninstall.sh installer/linux/README.txt

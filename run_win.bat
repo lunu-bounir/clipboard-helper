@@ -42,7 +42,7 @@ IF NOT EXIST clipboard-history-helper.exe (
 rem 7z when available, otherwise the Windows tar (bsdtar) writes zip archives with -a
 where 7z >nul 2>&1
 IF %errorlevel%==0 (
-  7z a -tzip windows.zip clipboard-history-helper.exe .\installer\win\install.bat .\installer\win\uninstall.bat
+  7z a -tzip windows.zip clipboard-history-helper.exe .\installer\win\install.bat .\installer\win\uninstall.bat .\installer\win\README.txt
 ) ELSE (
-  tar.exe -a -c -f windows.zip clipboard-history-helper.exe installer\win\install.bat installer\win\uninstall.bat
+  tar.exe -a -c -f windows.zip clipboard-history-helper.exe installer\win\install.bat installer\win\uninstall.bat installer\win\README.txt
 )

@@ -20,4 +20,4 @@ if [ ! -f helper ]; then
   exit 1
 fi
 
-zip  -j -9 mac.zip helper installer/mac/install.sh installer/mac/uninstall.sh
+zip  -j -9 mac.zip helper installer/mac/install.sh installer/mac/uninstall.sh installer/mac/README.txt

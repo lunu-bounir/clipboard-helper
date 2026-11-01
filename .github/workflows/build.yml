@@ -16,7 +16,7 @@ jobs:
       - name: Stage unpacked install files
         run: |
           mkdir -p artifacts-mac
-          cp helper installer/mac/install.sh installer/mac/uninstall.sh artifacts-mac/
+          cp helper installer/mac/install.sh installer/mac/uninstall.sh installer/mac/README.txt artifacts-mac/
       - uses: actions/upload-artifact@v7
         with:
           name: mac-zip
@@ -40,6 +40,7 @@ jobs:
           copy /Y clipboard-history-helper.exe artifacts-win\
           copy /Y installer\win\install.bat artifacts-win\
           copy /Y installer\win\uninstall.bat artifacts-win\
+          copy /Y installer\win\README.txt artifacts-win\
       - uses: actions/upload-artifact@v7
         with:
           name: windows-zip
@@ -60,7 +61,7 @@ jobs:
       - name: Stage unpacked install files
         run: |
           mkdir -p artifacts-linux
-          cp helper installer/linux/install.sh installer/linux/uninstall.sh artifacts-linux/
+          cp helper installer/linux/install.sh installer/linux/uninstall.sh installer/linux/README.txt artifacts-linux/
       - uses: actions/upload-artifact@v7
         with:
           name: linux-zip
