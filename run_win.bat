@@ -18,6 +18,9 @@ IF errorlevel 1 (
 rem json.hpp is vendored in the "vendor" directory (no network access needed at build time)
 copy /Y helper.mm helper.cpp >nul
 
+rem stale binary would mask a failed build below
+IF EXIST clipboard-history-helper.exe DEL /F /Q clipboard-history-helper.exe
+
 rem Windows icon-only resource: version information (missing version info is a
 rem known source of antivirus false positives)
 rc.exe /fo helper.res helper.rc
@@ -30,6 +33,11 @@ IF errorlevel 1 exit /b 1
 
 link.exe /OUT:"clipboard-history-helper.exe" helper.obj win.obj helper.res user32.lib /SUBSYSTEM:CONSOLE /MACHINE:X64 /DEBUG:NONE
 IF errorlevel 1 exit /b 1
+
+IF NOT EXIST clipboard-history-helper.exe (
+  ECHO compilation did not produce clipboard-history-helper.exe
+  exit /b 1
+)
 
 rem 7z when available, otherwise the Windows tar (bsdtar) writes zip archives with -a
 where 7z >nul 2>&1

@@ -33,9 +33,12 @@ int pid() {
 
 void focus(int pid) {
   NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
-  if (@available(macOS 14.0, *)) {
-    [app activate];
-  } else {
-    [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
-  }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  // activate(options:) is the documented NSRunningApplication API (there is no
+  // zero-argument activate selector on this class). The flag it takes is ignored
+  // by the macOS 14+ cooperative activation, but the call itself is kept for
+  // older systems and marked deprecated-but-present through current SDKs.
+  [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+#pragma clang diagnostic pop
 }
