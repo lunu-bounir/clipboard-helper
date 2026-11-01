@@ -3,7 +3,7 @@
 pushd "%~dp0"
 
 SET ID="desktop.clipboard.manager"
-SET FILE=helper.exe
+SET FILE=clipboard-history-helper.exe
 
 ECHO .. Deleting Chrome Registry
 REG DELETE "HKCU\Software\Google\Chrome\NativeMessagingHosts\%ID%" /f

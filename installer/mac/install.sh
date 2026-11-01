@@ -9,6 +9,12 @@ echo ".. Copy $FILE to $HOME/.config/desktop.clipboard.manager/"
 mkdir -p $HOME/.config/desktop.clipboard.manager/
 cp $FILE $HOME/.config/desktop.clipboard.manager/
 
+# The helper is not signed with a Developer ID certificate, so files arriving
+# through a download get the "com.apple.quarantine" attribute applied by macOS
+# and are blocked at launch. This installer was started deliberately by the
+# user, so we clear the attribute (the same approach Homebrew casks use).
+xattr -dr com.apple.quarantine "$HOME/.config/desktop.clipboard.manager/" 2>/dev/null || true
+
 cat > $ID.json <<- EOM
 {
   "name": "$ID",
@@ -95,7 +101,7 @@ echo ".. Clean-up"
 rm $ID.json
 
 printf "\033[0;31mIMPORTANT\033[0m\n"
-printf "\033[0;34mFor the extension to use this helper, right-click on the helper executable, and press the \"Open\" context menu item once for your operating system to whitelist this executable.\033[0m\n"
+printf "\033[0;34mThe installer has already cleared the macOS quarantine flag on the helper. If macOS still reports that the helper \"cannot be opened because the developer cannot be verified\", right-click on the helper executable and choose \"Open\" once, then confirm with \"Open\". Doing so also whitelists the executable for the future.\033[0m\n"
 read -p "Press enter to open directory"
 open ~/.config/desktop.clipboard.manager
 

@@ -2,7 +2,7 @@
 
 pushd "%~dp0"
 
-SET FILE=helper.exe
+SET FILE=clipboard-history-helper.exe
 SET ID=desktop.clipboard.manager
 
 SET PATH=C:\Windows\System32;%PATH%

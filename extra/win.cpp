@@ -4,21 +4,30 @@
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
 
+// UTF-8 clipboard text (unlike CF_TEXT, this preserves non-ASCII characters).
 std::string paste() {
-  if (! OpenClipboard(nullptr))
+  if (!OpenClipboard(nullptr))
     throw 20;
 
-  HANDLE hData = GetClipboardData(CF_TEXT);
-  if (hData == nullptr)
-    throw 21;
+  std::string text;
 
-  char * pszText = static_cast<char*>(GlobalLock(hData));
-  if (pszText == nullptr)
-    throw 22;
+  HANDLE hData = GetClipboardData(CF_UNICODETEXT);
+  if (hData != nullptr) {
+    wchar_t *wtext = static_cast<wchar_t*>(GlobalLock(hData));
+    if (wtext == nullptr)
+      throw 22;
 
-  std::string text(pszText);
+    // WideCharToMultiByte(-1) returns the byte count including the terminating null
+    int len = WideCharToMultiByte(CP_UTF8, 0, wtext, -1, nullptr, 0, nullptr, nullptr);
+    if (len > 1) {
+      text.resize(len - 1);
+      WideCharToMultiByte(CP_UTF8, 0, wtext, -1, &text[0], len - 1, nullptr, nullptr);
+    }
 
-  GlobalUnlock(hData);
+    GlobalUnlock(hData);
+  }
+  // No CF_UNICODETEXT on the clipboard (image, file list, empty): report empty
+  // text like the macOS implementation does instead of aborting the process.
 
   CloseClipboard();
 
@@ -28,7 +37,6 @@ std::string paste() {
 void ClipboardWait() {
   const char szClassName[] = "Clipboard Manager";
   WNDCLASS windowClass = {0};
-  windowClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
   windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
   windowClass.hInstance = NULL;
   windowClass.lpfnWndProc = WndProc;

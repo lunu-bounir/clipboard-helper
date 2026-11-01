@@ -17,7 +17,7 @@ void ClipboardWait() {
   const int old = pasteboard.changeCount;
 
   while(pasteboard.changeCount == old) {
-    usleep(5e5);
+    usleep(500000);
   }
 }
 
@@ -33,5 +33,9 @@ int pid() {
 
 void focus(int pid) {
   NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
-  [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+  if (@available(macOS 14.0, *)) {
+    [app activate];
+  } else {
+    [app activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+  }
 }

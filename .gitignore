@@ -1,0 +1,19 @@
+# build artifacts
+/build
+/helper
+/helper.cpp
+/helper.dSYM/
+/helper.obj
+/helper.exe
+clipboard-history-helper.exe
+*.obj
+*.res
+*.lib
+*.exp
+*.pdb
+*.zip
+
+# macOS
+.DS_Store
+
+# documented exceptions: vendor/json.hpp and the installer scripts are committed on purpose
