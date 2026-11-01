@@ -13,7 +13,9 @@ cp $FILE $HOME/.config/desktop.clipboard.manager/
 # through a download get the "com.apple.quarantine" attribute applied by macOS
 # and are blocked at launch. This installer was started deliberately by the
 # user, so we clear the attribute (the same approach Homebrew casks use).
-xattr -dr com.apple.quarantine "$HOME/.config/desktop.clipboard.manager/" 2>/dev/null || true
+# The helper is the only file executed later: no recursive flag needed, which
+# keeps compatibility with older xattr versions that do not know "-r".
+xattr -d com.apple.quarantine "$HOME/.config/$ID/$FILE" 2>/dev/null || true
 
 cat > $ID.json <<- EOM
 {
