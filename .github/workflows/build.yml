@@ -78,6 +78,11 @@ jobs:
     permissions:
       contents: write
     steps:
+      # gh needs a git context to infer the repository (and --generate-notes
+      # needs the tag checked out to compute notes against the right commit)
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
       - uses: actions/download-artifact@v8
         with:
           pattern: release-*
